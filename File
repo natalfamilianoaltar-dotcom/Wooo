@@ -1,7 +1,45 @@
+
+-- 🔹 FPS Boost automático
+do
+    local l_game = game
+    local l_Workspace = l_game.Workspace
+    local _ = l_game.Lighting
+    local _ = l_Workspace.Terrain
+
+    -- Força qualidade mínima
+    settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
+
+    -- Loop em todos os objetos para otimizar
+    for _, obj in pairs(l_game:GetDescendants()) do
+        if not obj:IsA("Part") and not obj:IsA("Union") and not obj:IsA("CornerWedgePart") and not obj:IsA("TrussPart") then
+            if obj:IsA("Decal") or obj:IsA("Texture") then
+                obj.Transparency = 1
+            elseif obj:IsA("ParticleEmitter") or obj:IsA("Trail") then
+                obj.Lifetime = NumberRange.new(0)
+            elseif obj:IsA("Explosion") then
+                obj.BlastPressure = 1
+                obj.BlastRadius = 1
+            elseif obj:IsA("Fire") or obj:IsA("SpotLight") or obj:IsA("Smoke") then
+                obj.Enabled = false
+            end
+        else
+            obj.Material = Enum.Material.Plastic
+            obj.Reflectance = 0
+        end
+    end
+end
+
+-- Notificaçao 
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Nebunly Hub",
+    Text = "✅️ Nebunly Carregado 3 ✅️",
+    Duration = 5
+})
+
 -- Fast Attack
 loadstring(game:HttpGet("https://pastebin.com/raw/W7fbjKEp"))()
 
---DEOBFUSCATED BY _NYZLINH
+-- Script Inteiro
 local L_1_ = {}
 L_1_[2] = table["concat"]
 do
@@ -2214,8 +2252,8 @@ L_1_[16] = (loadstring(game:HttpGet(L_1_[2]({
 	"s/main/UiRedzHub.lua"
 }))))()
 L_1_[38] = L_1_[16]:MakeWindow({
-	["Title"] = "Nebunly X Hub";
-	["SubTitle"] = "by NebunlyGroup",
+	["Title"] = "Nebunly | Hub";
+	["SubTitle"] = "By Vxnz",
 	["SaveFolder"] = "redz library V5.json"
 })
 L_1_[87] = Instance["new"]("ScreenGui")
@@ -2225,7 +2263,7 @@ L_1_[41] = Instance["new"]("ImageButton")
 L_1_[41]["Size"] = UDim2["new"](0, 50, 0, 50)
 L_1_[41]["Position"] = UDim2["new"](.15, 0, .15, 0)
 L_1_[41]["Image"] = L_1_[2]({
-	"rbxassetid://71844668882842",
+	"rbxassetid://92688117392411",
 })
 L_1_[41][L_1_[2]({
 	"BackgroundTransparen";
@@ -2297,90 +2335,374 @@ L_1_[41]["MouseButton1Click"]:Connect(function()
 	L_1_[38]:Minimize(not L_1_[108])
 end)
 L_1_[93] = {
-
-["Main"] = L_1_[38]:MakeTab({
-	["Title"] = "General/Farming";
-	["Icon"] = L_1_[2]({
-		"rbxassetid://4483362458";
-		"357"
+	["Info"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab Status and information";
+		["Icon"] = "Info"
+	});
+	["Main"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab General";
+		["Icon"] = L_1_[2]({
+			"rbxassetid://7733960";
+			"981"
+		})
+	}),
+	["Settings"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab Config",
+		["Icon"] = L_1_[2]({
+			"rbxassetid://7734053";
+			"495"
+		})
+	});
+	["Fish"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab Fishing";
+		["Icon"] = L_1_[2]({
+			"rbxassetid://1276640";
+			"59821666"
+		})
+	}),
+	["Quests"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab Quest And Item's";
+		["Icon"] = L_1_[2]({
+			"rbxassetid://1307562",
+			"2619"
+		})
+	}),
+	["SeaEvent"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab Sea Event";
+		["Icon"] = "waves"
+	});
+	["Race"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab Mirage And RaceV4",
+		["Icon"] = L_1_[2]({
+			"rbxassetid://1116288",
+			"9532"
+		})
+	}),
+	["Prehistoric"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab Volcano Event";
+		["Icon"] = "tent"
+	}),
+	["Esp"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab Player And Esp";
+		["Icon"] = L_1_[2]({
+			"rbxassetid://7040410";
+			"130"
+		})
+	});
+	["Raids"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab Fruits And Raid";
+		["Icon"] = L_1_[2]({
+			"rbxassetid://1115598";
+			"6081"
+		})
+	}),
+	["Combat"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab Player Boost",
+		["Icon"] = L_1_[2]({
+			"rbxassetid://1307565",
+			"1575"
+		})
+	}),
+	["Travel"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab Teleport";
+		["Icon"] = "locate"
+	});
+	["Shop"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab Shopping";
+		["Icon"] = L_1_[2]({
+			"rbxassetid://6031265",
+			"976"
+		})
+	}),
+	["Misc"] = L_1_[38]:MakeTab({
+		["Title"] = "Tab Misc",
+		["Icon"] = L_1_[2]({
+			"rbxassetid://1070978",
+			"3577"
+		})
 	})
-}),
-["Settings"] = L_1_[38]:MakeTab({
-	["Title"] = "Config/Setting",
-	["Icon"] = L_1_[2]({
-		"rbxassetid://4483363592";
-		"462"
-	})
-});
-["Fish"] = L_1_[38]:MakeTab({
-	["Title"] = "Fishing";
-	["Icon"] = L_1_[2]({
-		"rbxassetid://4483364673";
-		"59821667"
-	})
-}),
-["Quests"] = L_1_[38]:MakeTab({
-	["Title"] = "Quest And Itens";
-	["Icon"] = L_1_[2]({
-		"rbxassetid://4483365739",
-		"2620"
-	})
-}),
-["SeaEvent"] = L_1_[38]:MakeTab({
-	["Title"] = "Sea Events";
-	["Icon"] = "anchor"
-});
-["Race"] = L_1_[38]:MakeTab({
-	["Title"] = "Mirage And Race v4",
-	["Icon"] = L_1_[2]({
-		"rbxassetid://4483366845",
-		"9533"
-	})
-}),
-["Prehistoric"] = L_1_[38]:MakeTab({
-	["Title"] = "Volcano Events";
-	["Icon"] = "volcano"
-}),
-["Esp"] = L_1_[38]:MakeTab({
-	["Title"] = "Stats/Esp's";
-	["Icon"] = L_1_[2]({
-		"rbxassetid://4483367931";
-		"131"
-	})
-});
-["Raids"] = L_1_[38]:MakeTab({
-	["Title"] = "Fruit And Raid";
-	["Icon"] = L_1_[2]({
-		"rbxassetid://4483369027";
-		"6082"
-	})
-}),
-["Combat"] = L_1_[38]:MakeTab({
-	["Title"] = "Player/Combat PvP",
-	["Icon"] = L_1_[2]({
-		"rbxassetid://4483370156",
-		"1576"
-	})
-}),
-["Travel"] = L_1_[38]:MakeTab({
-	["Title"] = "Teleport";
-	["Icon"] = "compass"
-});
-["Shop"] = L_1_[38]:MakeTab({
-	["Title"] = "Shopping";
-	["Icon"] = L_1_[2]({
-		"rbxassetid://4483371298",
-		"977"
-	})
-}),
-["Misc"] = L_1_[38]:MakeTab({
-	["Title"] = "Misc and Others",
-	["Icon"] = L_1_[2]({
-		"rbxassetid://4483372453",
-		"3578"
+}
+L_1_[93]["Info"]:AddSection("Information")
+L_1_[93]["Info"]:AddDiscordInvite({
+	["Name"] = "Nebunly Hub Discord",
+	["Description"] = L_1_[2]({
+		"Release Date [2/02/";
+		"2026]"
+	}),
+	["Logo"] = L_1_[2]({
+		"rbxassetid://92688117392411",
+	}),
+	["Invite"] = L_1_[2]({
+		"https://discord.gg/d",
+		"vqDj9tum4"
 	})
 })
-
+L_1_[93]["Info"]:AddSection("Status Server")
+Time = L_1_[93]["Info"]:AddParagraph({
+	["Title"] = "Time Zone";
+	["Content"] = ""
+})
+function UpdateOS()
+	local L_190_ = {}
+	L_190_[6] = os["date"]("*t")
+	L_190_[4] = L_190_[6]["hour"] % 24
+	L_190_[3] = L_190_[4] < 12 and "AM" or "PM"
+	L_190_[8] = string["format"]("%02i:%02i:%02i %s", (L_190_[4] - 1) % 12 + 1, L_190_[6]["min"], L_190_[6]["sec"], L_190_[3])
+	L_190_[11] = string["format"]("%02d/%02d/%04d", L_190_[6]["day"], L_190_[6]["month"], L_190_[6]["year"])
+	L_190_[9] = game:GetService("LocalizationService")
+	L_190_[1] = game:GetService("Players")
+	L_190_[10] = L_190_[1]["LocalPlayer"]
+	L_190_[12] = L_190_[10]["Name"]
+	if not(getgenv())["countryRegionCode"] then
+		L_190_[7], L_190_[2] = pcall(function()
+			return L_190_[9]:GetCountryRegionForPlayerAsync(L_190_[10])
+		end)
+		if L_190_[7] then
+			(getgenv())["countryRegionCode"] = L_190_[2]
+		else
+			(getgenv())["countryRegionCode"] = "Unknown"
+		end
+	else
+		L_190_[2] = (getgenv())["countryRegionCode"]
+	end
+	Time:SetDesc(L_190_[11] .. (" - " .. (L_190_[8] .. (" [ " .. (L_190_[2] .. " ]")))))
+end
+spawn(function()
+	while true do
+		UpdateOS()
+		wait(1)
+	end
+end)
+Timmessss = L_1_[93]["Info"]:AddParagraph({
+	["Title"] = "Time",
+	["Content"] = ""
+})
+function UpdateTime()
+	local L_191_ = {}
+	L_191_[1] = math["floor"](workspace["DistributedGameTime"] + .5)
+	L_191_[3] = math["floor"](L_191_[1] / 3600) % 24
+	L_191_[2] = math["floor"](L_191_[1] / 60) % 60
+	L_191_[4] = math["floor"](L_191_[1] / 1) % 60
+	Timmessss:SetDesc(L_191_[3] .. (" Hour (h) " .. (L_191_[2] .. (" Minute (m) " .. (L_191_[4] .. " Second (s) ")))))
+end
+spawn(function()
+	while true do
+		UpdateTime()
+		wait(1)
+	end
+end)
+Miragecheck = L_1_[93]["Info"]:AddParagraph({
+	["Title"] = "Mirage Island";
+	["Content"] = "Status: "
+})
+L_1_[77] = ""
+spawn(function()
+	pcall(function()
+		while true do
+			local L_192_ = {}
+			wait(1)
+			L_192_[3] = game["Workspace"]["_WorldOrigin"]["Locations"]:FindFirstChild("Mirage Island") ~= nil
+			L_192_[1] = L_192_[3] and "✅️" or "❌️"
+			if L_192_[1] ~= L_1_[77] then
+				Miragecheck:SetDesc("Status: " .. L_192_[1])
+				L_1_[77] = L_192_[1]
+			end
+		end
+	end)
+end)
+Kitsunecheck = L_1_[93]["Info"]:AddParagraph({
+	["Title"] = "Kitsune Island",
+	["Content"] = "Status: "
+})
+spawn(function()
+	local L_193_ = {}
+	L_193_[1] = ""
+	while task["wait"](1) do
+		local L_194_ = {}
+		L_194_[2] = (game:GetService("Workspace"))["Map"]:FindFirstChild("KitsuneIsland") and "✅️" or "❌️"
+		if L_194_[2] ~= L_193_[1] then
+			Kitsunecheck:SetDesc("Status: " .. L_194_[2])
+			L_193_[1] = L_194_[2]
+		end
+	end
+end)
+CPrehistoriccheck = L_1_[93]["Info"]:AddParagraph({
+	["Title"] = "Prehistoric Island",
+	["Desc"] = "Status: "
+})
+task["spawn"](function()
+	local L_195_ = {}
+	L_195_[2] = ""
+	while task["wait"](1) do
+		local L_196_ = {}
+		L_196_[1] = game["Workspace"]["_WorldOrigin"]["Locations"]:FindFirstChild("Prehistoric Island") and "✅️" or "❌️"
+		if L_196_[1] ~= L_195_[2] then
+			CPrehistoriccheck:SetDesc("Status: " .. L_196_[1])
+			L_195_[2] = L_196_[1]
+		end
+	end
+end)
+FrozenIsland = L_1_[93]["Info"]:AddParagraph({
+	["Title"] = "Frozen Dimension";
+	["Content"] = "Status: "
+})
+spawn(function()
+	local L_197_ = {}
+	L_197_[2] = ""
+	while wait(1) do
+		local L_198_ = {}
+		L_198_[2] = game["Workspace"]["_WorldOrigin"]["Locations"]:FindFirstChild("Frozen Dimension") and "✅️" or "❌️"
+		if L_198_[2] ~= L_197_[2] then
+			FrozenIsland:SetDesc("Status: " .. L_198_[2])
+			L_197_[2] = L_198_[2]
+		end
+	end
+end)
+MobCakePrince = L_1_[93]["Info"]:AddParagraph({
+	["Title"] = "Dimension Killed",
+	["Content"] = ""
+})
+spawn(function()
+	while wait(1) do
+		local L_199_ = {}
+		L_199_[2] = (game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer("CakePrinceSpawner")
+		L_199_[3] = "Cake Prince: ✅️"
+		if string["len"](L_199_[2]) >= 86 then
+			local L_200_ = {}
+			L_200_[1] = string["sub"](L_199_[2], 39, 41)
+			L_199_[3] = "Kill: " .. L_200_[1]
+		end
+		MobCakePrince:SetDesc(L_199_[3])
+	end
+end)
+CheckRip = L_1_[93]["Info"]:AddParagraph({
+	["Title"] = "Rip_Indra";
+	["Content"] = "Status: "
+})
+spawn(function()
+	local L_201_ = {}
+	L_201_[2] = ""
+	while wait(1) do
+		local L_202_ = {}
+		L_202_[1] = (game:GetService("ReplicatedStorage")):FindFirstChild("rip_indra True Form") or (game:GetService("Workspace"))["Enemies"]:FindFirstChild("rip_indra") and "✅️" or "❌️"
+		if L_202_[1] ~= L_201_[2] then
+			CheckRip:SetDesc("Status: " .. L_202_[1])
+			L_201_[2] = L_202_[1]
+		end
+	end
+end)
+CheckDoughKing = L_1_[93]["Info"]:AddParagraph({
+	["Title"] = "Dough King";
+	["Content"] = "Status: "
+})
+spawn(function()
+	local L_203_ = {}
+	L_203_[1] = ""
+	while wait(1) do
+		local L_204_ = {}
+		L_204_[2] = (game:GetService("ReplicatedStorage")):FindFirstChild("Dough King") or (game:GetService("Workspace"))["Enemies"]:FindFirstChild("Dough King") and "✅️" or "❌️"
+		if L_204_[2] ~= L_203_[1] then
+			CheckDoughKing:SetDesc("Status: " .. L_204_[2])
+			L_203_[1] = L_204_[2]
+		end
+	end
+end)
+EliteHunter = L_1_[93]["Info"]:AddParagraph({
+	["Title"] = "Elite Hunter";
+	["Content"] = "Status: "
+})
+spawn(function()
+	local L_205_ = {}
+	L_205_[1] = ""
+	while wait(1) do
+		local L_206_ = {}
+		L_206_[3] = ((game:GetService("ReplicatedStorage")):FindFirstChild("Diablo") or (game:GetService("ReplicatedStorage")):FindFirstChild("Deandre") or (game:GetService("ReplicatedStorage")):FindFirstChild("Urban") or (game:GetService("Workspace"))["Enemies"]:FindFirstChild("Diablo") or (game:GetService("Workspace"))["Enemies"]:FindFirstChild("Deandre") or (game:GetService("Workspace"))["Enemies"]:FindFirstChild("Urban")) and "✅️" or "❌️"
+		L_206_[1] = (game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer("EliteHunter", "Progress")
+		if L_206_[3] ~= L_205_[1] then
+			EliteHunter:SetDesc("Status: " .. (L_206_[3] .. (" | Killed: " .. L_206_[1])))
+			L_205_[1] = L_206_[3]
+		end
+	end
+end)
+FM = L_1_[93]["Info"]:AddParagraph({
+	["Title"] = "Full Moon",
+	["Content"] = ""
+})
+task["spawn"](function()
+	while task["wait"](1) do
+		local L_207_ = {}
+		L_207_[1] = (game:GetService("Lighting"))["Sky"]["MoonTextureId"]
+		L_207_[3] = "Moon: 0/5"
+		if L_207_[1] == L_1_[2]({
+			"http://www.roblox.co";
+			"m/asset/?id=97091494";
+			"31"
+		}) then
+			L_207_[3] = "Moon: 5/5"
+		elseif L_207_[1] == L_1_[2]({
+			"http://www.roblox.co";
+			"m/asset/?id=97091490";
+			"52"
+		}) then
+			L_207_[3] = "Moon: 4/5"
+		elseif L_207_[1] == L_1_[2]({
+			"http://www.roblox.co";
+			"m/asset/?id=97091437",
+			"33"
+		}) then
+			L_207_[3] = "Moon: 3/5"
+		elseif L_207_[1] == L_1_[2]({
+			"http://www.roblox.co";
+			"m/asset/?id=97091504",
+			"01"
+		}) then
+			L_207_[3] = "Moon: 2/5"
+		elseif L_207_[1] == L_1_[2]({
+			"http://www.roblox.co",
+			"m/asset/?id=97091496",
+			"80"
+		}) then
+			L_207_[3] = "Moon: 1/5"
+		end
+		FM:SetDesc(L_207_[3])
+	end
+end)
+LegendarySword = L_1_[93]["Info"]:AddParagraph({
+	["Title"] = "Legendary Sword",
+	["Content"] = "Status: "
+})
+spawn(function()
+	local L_208_ = {}
+	L_208_[1] = ""
+	while wait(1) do
+		local L_209_ = {}
+		L_209_[1] = L_1_[2]({
+			"Not Found Legend Swo",
+			"rds"
+		})
+		if (game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer("LegendarySwordDealer", "1") then
+			L_209_[1] = "Shisui"
+		elseif (game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer("LegendarySwordDealer", "2") then
+			L_209_[1] = "Wando"
+		elseif (game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer("LegendarySwordDealer", "3") then
+			L_209_[1] = "Saddi"
+		end
+		LegendarySword:SetDesc(L_209_[1])
+	end
+end)
+StatusBone = L_1_[93]["Info"]:AddParagraph({
+	["Title"] = "Bone";
+	["Content"] = ""
+})
+spawn(function()
+	while wait(1) do
+		StatusBone:SetDesc("You Have: " .. (tostring((game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer("Bones", "Check")) .. " Bones"))
+	end
+end)
+L_1_[5] = replicated["Modules"]["Net"][L_1_[2]({
+	"RF/SubmarineWorkerSp",
+	"eak"
+})]
 WeaponDropdown = L_1_[93]["Main"]:AddDropdown({
 	["Name"] = "Select Weapon",
 	["Options"] = {
@@ -2437,7 +2759,7 @@ spawn(function()
 end)
 
 L_1_[93]["Main"]:AddSection({
-	"Farming"
+	"Farm's"
 })
 FarmLevel = L_1_[93]["Main"]:AddToggle({
 	["Name"] = "Auto Farm Level",
@@ -2700,47 +3022,13 @@ spawn(function()
 		end
 	end
 end)
-Ecto = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Ectoplasm",
-	["Description"] = "",
-	["Default"] = false,
-	["Callback"] = function(L_258_arg0)
-		local L_259_ = {}
-		L_259_[1] = L_258_arg0
-		_G["AutoEctoplasm"] = L_259_[1]
-	end
-})
-spawn(function()
-	while wait(Sec) do
-		pcall(function()
-			if _G["AutoEctoplasm"] then
-				local L_260_ = {}
-				L_260_[3] = {
-					"Ship Deckhand";
-					"Ship Engineer";
-					"Ship Steward",
-					"Ship Officer";
-					"Arctic Warrior"
-				}
-				L_260_[2] = GetConnectionEnemies(L_260_[3])
-				if L_1_[4]["Alive"](L_260_[2]) then
-					repeat
-						wait()
-						L_1_[4]["Kill"](L_260_[2], _G["AutoEctoplasm"])
-					until not _G["AutoEctoplasm"] or not L_260_[2]["Parent"] or L_260_[2]["Humanoid"]["Health"] <= 0
-				else
-					replicated["Remotes"]["CommF_"]:InvokeServer("requestEntrance", Vector3["new"](923.21252441406, 126.9760055542, 32852.83203125))
-				end
-			end
-		end)
-	end
-end)
+
 
 L_1_[93]["Main"]:AddSection({
-	"Collect Chest"
+	"Chest Collection's"
 })
 ChestTW = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Chest",
+	["Name"] = "Auto Collect Chest",
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_347_arg0)
@@ -2784,7 +3072,7 @@ spawn(function()
 	end
 end)
 ChestBP = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Chest Bypass";
+	["Name"] = "Auto Chest TP";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_352_arg0)
@@ -2862,6 +3150,9 @@ ChestBP = L_1_[93]["Main"]:AddToggle({
 		end
 	end
 })
+L_1_[93]["Main"]:AddSection({
+	"God Chalice"
+})
 StopI = L_1_[93]["Main"]:AddToggle({
 	["Name"] = "Stop Items";
 	["Description"] = "",
@@ -2884,661 +3175,9 @@ spawn(function()
 		end
 	end
 end)
+
 L_1_[93]["Main"]:AddSection({
-	"Collect Berry"
-})
-Berry = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Berry";
-	["Description"] = "";
-	["Default"] = false;
-	["Callback"] = function(L_369_arg0)
-		local L_370_ = {}
-		L_370_[2] = L_369_arg0
-		_G["AutoBerry"] = L_370_[2]
-	end
-})
-spawn(function()
-	while wait(Sec) do
-		if _G["AutoBerry"] then
-			local L_371_ = {}
-			L_371_[7] = game:GetService("CollectionService")
-			L_371_[1] = game:GetService("Players")
-			L_371_[3] = L_371_[1]["LocalPlayer"]
-			L_371_[5] = L_371_[7]:GetTagged("BerryBush")
-			L_371_[6], L_371_[4] = math["huge"]
-			for L_372_forvar0 = 1, #L_371_[5], 1 do
-				local L_373_ = {}
-				L_373_[1] = L_372_forvar0
-				L_373_[2] = L_371_[5][L_373_[1]]
-				for L_374_forvar0, L_375_forvar1 in pairs(L_373_[2]:GetAttributes()) do
-					local L_376_ = {}
-					L_376_[1], L_376_[2] = L_374_forvar0, L_375_forvar1
-					if not BerryArray or table["find"](BerryArray, L_376_[2]) then
-						_tp(L_373_[2]["Parent"]:GetPivot())
-						for L_377_forvar0 = 1, #L_371_[5], 1 do
-							local L_378_ = {}
-							L_378_[1] = L_377_forvar0
-							L_378_[2] = L_371_[5][L_378_[1]]
-							for L_379_forvar0, L_380_forvar1 in pairs(L_378_[2]:GetChildren()) do
-								local L_381_ = {}
-								L_381_[2], L_381_[1] = L_379_forvar0, L_380_forvar1
-								if not BerryArray or table["find"](BerryArray, L_381_[1]) then
-									_tp(L_381_[1]["WorldPivot"])
-									fireproximityprompt(L_381_[1]["ProximityPrompt"], math["huge"])
-								end
-							end
-						end
-					end
-				end
-			end
-		end
-	end
-end)
-BerryH = L_1_[93]["Main"]:AddToggle({
-	["Name"] = L_1_[2]({
-		"Auto Farm Berry + Ho",
-		"p"
-	}),
-	["Description"] = "";
-	["Default"] = false,
-	["Callback"] = function(L_382_arg0)
-		local L_383_ = {}
-		L_383_[1] = L_382_arg0
-		_G["AutoBerryH"] = L_383_[1]
-	end
-})
-spawn(function()
-	while wait(Sec) do
-		if _G["AutoBerryH"] then
-			local L_384_ = {}
-			L_384_[5] = game:GetService("CollectionService")
-			L_384_[1] = game:GetService("Players")
-			L_384_[4] = L_384_[1]["LocalPlayer"]
-			L_384_[3] = L_384_[5]:GetTagged("BerryBush")
-			if #L_384_[3] == 0 then
-				local L_385_ = {}
-				L_385_[3] = game:GetService("TeleportService")
-				L_385_[1] = {}
-				L_385_[5], L_385_[2] = pcall(function()
-					L_385_[1] = (game:GetService("HttpService")):JSONDecode(game:HttpGet(L_1_[2]({
-						"https://games.roblox";
-						".com/v1/games/"
-					}) .. (game["PlaceId"] .. L_1_[2]({
-						"/servers/Public?sort",
-						"Order=Asc&limit=100"
-					}))))
-				end)
-				if L_385_[5] and L_385_[1]["data"] then
-					for L_386_forvar0, L_387_forvar1 in pairs(L_385_[1]["data"]) do
-						local L_388_ = {}
-						L_388_[2], L_388_[1] = L_386_forvar0, L_387_forvar1
-						if L_388_[1]["playing"] < L_388_[1]["maxPlayers"] and L_388_[1]["id"] ~= game["JobId"] then
-							L_385_[3]:TeleportToPlaceInstance(game["PlaceId"], L_388_[1]["id"], L_384_[4])
-							break
-						end
-					end
-				end
-			else
-				for L_389_forvar0 = 1, #L_384_[3], 1 do
-					local L_390_ = {}
-					L_390_[1] = L_389_forvar0
-					L_390_[3] = L_384_[3][L_390_[1]]
-					for L_391_forvar0, L_392_forvar1 in pairs(L_390_[3]:GetAttributes()) do
-						local L_393_ = {}
-						L_393_[3], L_393_[2] = L_391_forvar0, L_392_forvar1
-						if not BerryArray or table["find"](BerryArray, L_393_[2]) then
-							_tp(L_390_[3]["Parent"]:GetPivot())
-							for L_394_forvar0 = 1, #L_384_[3], 1 do
-								local L_395_ = {}
-								L_395_[1] = L_394_forvar0
-								L_395_[3] = L_384_[3][L_395_[1]]
-								for L_396_forvar0, L_397_forvar1 in pairs(L_395_[3]:GetChildren()) do
-									local L_398_ = {}
-									L_398_[2], L_398_[3] = L_396_forvar0, L_397_forvar1
-									if not BerryArray or table["find"](BerryArray, L_398_[3]["Name"]) then
-										_tp(L_398_[3]["WorldPivot"])
-										fireproximityprompt(L_398_[3]["ProximityPrompt"], math["huge"])
-									end
-								end
-							end
-						end
-					end
-				end
-			end
-		end
-	end
-end)
-L_1_[93]["Main"]:AddSection({
-	"Farm Mob"
-})
-if World1 then
-	L_1_[93]["Main"]:AddDropdown({
-		["Name"] = "Select Mob",
-		["Default"] = false,
-		["Options"] = {
-			"Bandit";
-			"Monkey";
-			"Gorilla";
-			"Pirate";
-			"Brute";
-			"Desert Bandit";
-			"Desert Officer",
-			"Snow Bandit";
-			"Snowman";
-			"Chief Petty Officer";
-			"Sky Bandit",
-			"Dark Master",
-			"Toga Warrior";
-			"Gladiator",
-			"Military Soldier";
-			"Military Spy",
-			"Fishman Warrior";
-			"Fishman Commando",
-			"God's Guard";
-			"Shanda",
-			"Royal Squad";
-			"Royal Soldier",
-			"Galley Pirate";
-			"Galley Captain"
-		},
-		["Callback"] = function(L_399_arg0)
-			local L_400_ = {}
-			L_400_[1] = L_399_arg0;
-			(getgenv())["SelectMob"] = L_400_[1]
-		end
-	})
-end
-if World2 then
-	L_1_[93]["Main"]:AddDropdown({
-		["Name"] = "Select Mob";
-		["Default"] = false;
-		["Options"] = {
-			"Raider";
-			"Mercenary";
-			"Swan Pirate";
-			"Factory Staff",
-			"Marine Lieutenant",
-			"Marine Captain",
-			"Zombie";
-			"Vampire";
-			"Snow Trooper",
-			"Winter Warrior";
-			"Lab Subordinate";
-			"Horned Warrior",
-			"Magma Ninja",
-			"Lava Pirate";
-			"Ship Deckhand";
-			"Ship Engineer";
-			"Ship Steward";
-			"Ship Officer";
-			"Arctic Warrior";
-			"Snow Lurker";
-			"Sea Soldier";
-			"Water Fighter"
-		};
-		["Callback"] = function(L_401_arg0)
-			local L_402_ = {}
-			L_402_[2] = L_401_arg0;
-			(getgenv())["SelectMob"] = L_402_[2]
-		end
-	})
-end
-if World3 then
-	L_1_[93]["Main"]:AddDropdown({
-		["Name"] = "Select Mob",
-		["Default"] = false,
-		["Options"] = {
-			"Pirate Millionaire";
-			"Dragon Crew Warrior",
-			"Dragon Crew Archer";
-			"Female Islander",
-			"Giant Islander";
-			"Marine Commodore";
-			"Marine Rear Admiral",
-			"Fishman Raider",
-			"Fishman Captain",
-			"Forest Pirate",
-			"Mythological Pirate",
-			"Jungle Pirate",
-			"Musketeer Pirate";
-			"Reborn Skeleton",
-			"Living Zombie",
-			"Demonic Soul";
-			"Posessed Mummy";
-			"Peanut Scout";
-			"Peanut President",
-			"Ice Cream Chef",
-			"Ice Cream Commander";
-			"Cookie Crafter";
-			"Cake Guard";
-			"Baking Staff";
-			"Head Baker";
-			"Cocoa Warrior",
-			L_1_[2]({
-				"Chocolate Bar Battle";
-				"r"
-			}),
-			"Sweet Thief",
-			"Candy Rebel",
-			"Candy Pirate",
-			"Snow Demon",
-			"Isle Outlaw",
-			"Island Boy",
-			"Sun-kissed Warrior",
-			"Isle Champion"
-		};
-		["Callback"] = function(L_403_arg0)
-			local L_404_ = {}
-			L_404_[1] = L_403_arg0;
-			(getgenv())["SelectMob"] = L_404_[1]
-		end
-	})
-end
-L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Kill Mob";
-	["Default"] = false,
-	["Callback"] = function(L_405_arg0)
-		local L_406_ = {}
-		L_406_[2] = L_405_arg0
-		_G["AutoKillMob"] = L_406_[2]
-	end
-})
-spawn(function()
-	while wait() do
-		if _G["AutoKillMob"] then
-			pcall(function()
-				if (game:GetService("Workspace"))["Enemies"]:FindFirstChild((getgenv())["SelectMob"]) then
-					for L_407_forvar0, L_408_forvar1 in pairs((game:GetService("Workspace"))["Enemies"]:GetChildren()) do
-						local L_409_ = {}
-						L_409_[3], L_409_[1] = L_407_forvar0, L_408_forvar1
-						if L_409_[1]["Name"] == (getgenv())["SelectMob"] then
-							if L_409_[1]:FindFirstChild("Humanoid") and (L_409_[1]:FindFirstChild("HumanoidRootPart") and L_409_[1]["Humanoid"]["Health"] > 0) then
-								repeat
-									(game:GetService("RunService"))["Heartbeat"]:Wait()
-									L_1_[4]["Kill"](L_409_[1], _G["AutoKillMob"])
-								until not _G["AutoKillMob"] or not L_409_[1]["Parent"] or L_409_[1]["Humanoid"]["Health"] <= 0
-							end
-						end
-					end
-				end
-			end)
-		end
-	end
-end)
-L_1_[93]["Main"]:AddSection({
-	"Farm All Island"
-})
-L_1_[65] = {
-	["Pirates"] = {
-		["CFrame"] = CFrame["new"](-2709.67944, 24.5206585, 2104.24585, -0.744724929, -3.97967455e-08, -0.667371571, 4.32403588e-08, 1, -1.07884304e-07, .667371571, -1.09201515e-07, -0.744724929),
-		["Mobs"] = {
-			"Bandit"
-		}
-	};
-	["Marine"] = {
-		["CFrame"] = CFrame["new"](-2709.67944, 24.5206585, 2104.24585, -0.744724929, -3.97967455e-08, -0.667371571, 4.32403588e-08, 1, -1.07884304e-07, .667371571, -1.09201515e-07, -0.744724929),
-		["Mobs"] = {
-			"Trainee"
-		}
-	};
-	["Jungle"] = {
-		["CFrame"] = CFrame["new"](-1600, 36, 150);
-		["Mobs"] = {
-			"Monkey";
-			"Gorilla"
-		}
-	};
-	["Pirate Village"] = {
-		["CFrame"] = CFrame["new"](-1100, 4, 3850),
-		["Mobs"] = {
-			"Pirate",
-			"Brute"
-		}
-	};
-	["Desert"] = {
-		["CFrame"] = CFrame["new"](1090, 7, 4370);
-		["Mobs"] = {
-			"Desert Bandit";
-			"Desert Officer"
-		}
-	};
-	["Frozen Village"] = {
-		["CFrame"] = CFrame["new"](1200, 28, -1500);
-		["Mobs"] = {
-			"Snow Bandit";
-			"Snowman"
-		}
-	};
-	["Marine Fortress"] = {
-		["CFrame"] = CFrame["new"](-4500, 20, 4250),
-		["Mobs"] = {
-			"Chief Petty Officer"
-		}
-	};
-	["Skylands Lower"] = {
-		["CFrame"] = CFrame["new"](-5000, 700, -2500),
-		["Mobs"] = {
-			"Sky Bandit",
-			"Dark Master"
-		}
-	};
-	["Prison"] = {
-		["CFrame"] = CFrame["new"](4875, 6, 735),
-		["Mobs"] = {
-			"Prisoner",
-			"Dangerous Prisoner"
-		}
-	};
-	["Colosseum"] = {
-		["CFrame"] = CFrame["new"](-1500, 60, -290),
-		["Mobs"] = {
-			"Toga Warrior";
-			"Gladiator"
-		}
-	},
-	["Magma Village"] = {
-		["CFrame"] = CFrame["new"](-5200, 8, 8400);
-		["Mobs"] = {
-			"Military Soldier";
-			"Military Spy"
-		}
-	};
-	["Underwater City"] = {
-		["CFrame"] = CFrame["new"](61160, 5, 1819),
-		["Mobs"] = {
-			"Fishman Warrior";
-			"Fishman Commando"
-		}
-	};
-	["Skylands Upper"] = {
-		["CFrame"] = CFrame["new"](-7880, 5545, -380);
-		["Mobs"] = {
-			"Shanda";
-			"Royal Squad";
-			"Royal Soldier"
-		}
-	}
-}
-L_1_[32] = {
-	["Kingdom of Rose"] = {
-		["CFrame"] = CFrame["new"](-321, 73, 297);
-		["Mobs"] = {
-			"Raider";
-			"Mercenary",
-			"Swan Pirate";
-			"Factory Staff"
-		}
-	},
-	["Green Zone"] = {
-		["CFrame"] = CFrame["new"](-2447, 73, -3211);
-		["Mobs"] = {
-			"Marine Lieutenant",
-			"Marine Captain"
-		}
-	};
-	["Graveyard Island"] = {
-		["CFrame"] = CFrame["new"](-9515, 142, 5536);
-		["Mobs"] = {
-			"Zombie";
-			"Vampire"
-		}
-	},
-	["Snow Mountain"] = {
-		["CFrame"] = CFrame["new"](561, 401, -5306),
-		["Mobs"] = {
-			"Snow Trooper";
-			"Winter Warrior"
-		}
-	};
-	["Hot and Cold (Cold)"] = {
-		["CFrame"] = CFrame["new"](-6026, 15, -5062),
-		["Mobs"] = {
-			"Lab Subordinate",
-			"Horned Warrior"
-		}
-	},
-	["Hot and Cold (Hot)"] = {
-		["CFrame"] = CFrame["new"](-5478, 15, -5240);
-		["Mobs"] = {
-			"Magma Ninja",
-			"Lava Pirate"
-		}
-	},
-	["Cursed Ship"] = {
-		["CFrame"] = CFrame["new"](902, 126, 33071),
-		["Mobs"] = {
-			"Ship Deckhand",
-			"Ship Engineer",
-			"Ship Steward",
-			"Ship Officer"
-		}
-	},
-	["Ice Castle"] = {
-		["CFrame"] = CFrame["new"](6137, 294, -6747);
-		["Mobs"] = {
-			"Arctic Warrior",
-			"Snow Lurker"
-		}
-	};
-	["Forgotten Island"] = {
-		["CFrame"] = CFrame["new"](-3043, 238, -10191);
-		["Mobs"] = {
-			"Sea Soldier",
-			"Water Fighter"
-		}
-	}
-}
-L_1_[98] = {
-	["Port Town"] = {
-		["CFrame"] = CFrame["new"](-290, 44, 5450);
-		["Mobs"] = {
-			"Pirate Millionaire";
-			"Pistol Billionaire"
-		}
-	};
-	["Hydra Island"] = {
-		["CFrame"] = CFrame["new"](5228, 604, 345),
-		["Mobs"] = {
-			"Dragon Crew Warrior";
-			"Dragon Crew Archer";
-			"Female Islander";
-			"Giant Islander",
-			"Training Dummy"
-		}
-	};
-	["Great Tree"] = {
-		["CFrame"] = CFrame["new"](2682, 1682, -7190),
-		["Mobs"] = {
-			"Marine Commodore",
-			"Marine Rear Admiral"
-		}
-	};
-	["Floating Turtle"] = {
-		["CFrame"] = CFrame["new"](-12000, 331, -8500),
-		["Mobs"] = {
-			"Forest Pirate",
-			"Mythological Pirate",
-			"Jungle Pirate";
-			"Musketeer Pirate",
-			"Fishman Raider",
-			"Fishman Captain"
-		}
-	},
-	["Haunted Castle"] = {
-		["CFrame"] = CFrame["new"](-9515, 142, 5536),
-		["Mobs"] = {
-			"Reborn Skeleton";
-			"Living Zombie";
-			"Demonic Soul",
-			"Posessed Mummy"
-		}
-	};
-	["Sea of Treats"] = {
-		["CFrame"] = CFrame["new"](-1145, 13, -14450),
-		["Mobs"] = {
-			"Peanut Scout";
-			"Peanut President";
-			"Ice Cream Commander";
-			"Cookie Crafter";
-			"Cake Guard",
-			"Baking Staff",
-			"Head Baker",
-			"Cocoa Warrior";
-			L_1_[2]({
-				"Chocolate Bar Battle",
-				"r"
-			}),
-			"Sweet Thief";
-			"Candy Rebel"
-		}
-	};
-	["Tiki Outpost"] = {
-		["CFrame"] = CFrame["new"](-16200, 90, -17300);
-		["Mobs"] = {
-			"Isle Outlaw";
-			"Island Boy",
-			"Sun-kissed Warrior",
-			"Isle Champion"
-		}
-	},
-	["Submerged Island"] = {
-		["CFrame"] = CFrame["new"](-3200, -10, -10000);
-		["Mobs"] = {
-			"Reef Bandit";
-			"Coral Pirate",
-			"Sea Chanter";
-			"Ocean Prophet";
-			"High Disciple",
-			"Grand Devotee"
-		}
-	}
-}
-if World1 then
-	L_1_[93]["Main"]:AddDropdown({
-		["Name"] = "Select Island",
-		["Options"] = {
-			"Pirates",
-			"Marine",
-			"Jungle";
-			"Pirate Village",
-			"Desert";
-			"Frozen Village";
-			"Marine Fortress";
-			"Skylands Lower",
-			"Prison",
-			"Colosseum",
-			"Magma Village";
-			"Underwater City",
-			"Skylands Upper"
-		};
-		["Callback"] = function(L_410_arg0)
-			local L_411_ = {}
-			L_411_[1] = L_410_arg0
-			_G["SelectIsland"] = L_411_[1]
-		end
-	})
-end
-if World2 then
-	L_1_[93]["Main"]:AddDropdown({
-		["Name"] = "Select Island",
-		["Options"] = {
-			"Kingdom of Rose",
-			"Green Zone",
-			"Graveyard Island";
-			"Snow Mountain";
-			"Hot and Cold (Cold)",
-			"Hot and Cold (Hot)",
-			"Cursed Ship",
-			"Ice Castle";
-			"Forgotten Island"
-		},
-		["Callback"] = function(L_412_arg0)
-			local L_413_ = {}
-			L_413_[1] = L_412_arg0
-			_G["SelectIsland"] = L_413_[1]
-		end
-	})
-end
-if World3 then
-	L_1_[93]["Main"]:AddDropdown({
-		["Name"] = "Select Island";
-		["Options"] = {
-			"Port Town";
-			"Hydra Island";
-			"Great Tree";
-			"Floating Turtle",
-			"Haunted Castle";
-			"Sea of Treats";
-			"Tiki Outpost";
-			"Submerged Island"
-		},
-		["Callback"] = function(L_414_arg0)
-			local L_415_ = {}
-			L_415_[2] = L_414_arg0
-			_G["SelectIsland"] = L_415_[2]
-		end
-	})
-end
-if World1 then
-	L_1_[60] = L_1_[65]
-elseif World2 then
-	L_1_[60] = L_1_[32]
-elseif World3 then
-	L_1_[60] = L_1_[98]
-end
-L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm All Island",
-	["Default"] = false;
-	["Callback"] = function(L_416_arg0)
-		local L_417_ = {}
-		L_417_[1] = L_416_arg0
-		_G["AutoFarmIsland"] = L_417_[1]
-	end
-})
-task["spawn"](function()
-	while task["wait"](.2) do
-		local L_418_ = {}
-		if not _G["AutoFarmIsland"] then
-			continue
-		end
-		if not _G["SelectIsland"] then
-			continue
-		end
-		if not L_1_[60] then
-			continue
-		end
-		L_418_[1] = L_1_[60][_G["SelectIsland"]]
-		if not L_418_[1] then
-			continue
-		end
-		L_418_[3] = L_418_[1]["CFrame"]
-		L_418_[2] = L_418_[1]["Mobs"]
-		L_418_[5] = {}
-		for L_419_forvar0, L_420_forvar1 in ipairs(L_418_[2]) do
-			local L_421_ = {}
-			L_421_[3], L_421_[1] = L_419_forvar0, L_420_forvar1
-			L_418_[5][L_421_[1]] = true
-		end
-		L_418_[4] = false
-		for L_422_forvar0, L_423_forvar1 in pairs(workspace["Enemies"]:GetChildren()) do
-			local L_424_ = {}
-			L_424_[3], L_424_[2] = L_422_forvar0, L_423_forvar1
-			if L_418_[5][L_424_[2]["Name"]] and (L_424_[2]:FindFirstChild("Humanoid") and (L_424_[2]:FindFirstChild("HumanoidRootPart") and L_424_[2]["Humanoid"]["Health"] > 0)) then
-				L_418_[4] = true
-				repeat
-					task["wait"]()
-					_tp(L_424_[2]["HumanoidRootPart"]["CFrame"] * CFrame["new"](0, 10, 0))
-					L_1_[4]["Kill"](L_424_[2], true)
-				until not _G["AutoFarmIsland"] or not L_424_[2]["Parent"] or L_424_[2]["Humanoid"]["Health"] <= 0
-			end
-		end
-		if not L_418_[4] then
-			_tp(L_418_[3])
-		end
-	end
-end)
-L_1_[93]["Main"]:AddSection({
-	"Farm Elite Hunter"
+	"Elite Hunter"
 })
 Process = L_1_[93]["Main"]:AddParagraph({
 	["Title"] = "Elites Process ";
@@ -3766,7 +3405,7 @@ spawn(function()
 	end
 end)
 L_1_[93]["Main"]:AddSection({
-	"Farm Rip Indra"
+	"Rip Indra"
 })
 L_1_[93]["Main"]:AddToggle({
 	["Name"] = L_1_[2]({
@@ -3870,7 +3509,7 @@ spawn(function()
 	end
 end)
 L_1_[93]["Main"]:AddSection({
-	"Farming Cake"
+	"Cake Prince"
 })
 MobKilled = L_1_[93]["Main"]:AddParagraph({
 	["Title"] = "Cake Princes :";
@@ -4033,8 +3672,7 @@ spawn(function()
 end)
 L_1_[93]["Main"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Dough King [Ful";
-		"ly]"
+		"Auto Dough King";
 	}),
 	["Default"] = false;
 	["Callback"] = function(L_491_arg0)
@@ -4197,7 +3835,7 @@ spawn(function()
 	end
 end)
 L_1_[93]["Main"]:AddSection({
-	"Unlocked Dungeon"
+	"Dough King Dungeon"
 })
 DouD = L_1_[93]["Main"]:AddToggle({
 	["Name"] = L_1_[2]({
@@ -4280,7 +3918,7 @@ spawn(function()
 end)
 PhoD = L_1_[93]["Main"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Unlock Phoenix ";
+		"Unlock Phoenix Dungeon ";
 		"dungeon"
 	});
 	["Description"] = "",
@@ -4319,10 +3957,10 @@ spawn(function()
 	end
 end)
 L_1_[93]["Main"]:AddSection({
-	"Farming Bone"
+	"Bones"
 })
 CheckingBone = L_1_[93]["Main"]:AddParagraph({
-	["Title"] = " Bones :",
+	["Title"] = " Bones Status :",
 	["Content"] = ""
 })
 spawn(function()
@@ -4459,7 +4097,7 @@ spawn(function()
 	end
 end)
 RanBone = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Random Bones",
+	["Name"] = "Random Bones",
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_522_arg0)
@@ -4529,253 +4167,9 @@ spawn(function()
 		end
 	end
 end)
+
 L_1_[93]["Main"]:AddSection({
-	"Tyrant of the Skies"
-})
-TyrantStatus = L_1_[93]["Main"]:AddParagraph({
-	["Title"] = "Boss Spawn",
-	["Content"] = ""
-})
-spawn(function()
-	pcall(function()
-		while wait(1) do
-			if workspace["Enemies"]:FindFirstChild("Tyrant of the Skies") then
-				TyrantStatus:SetDesc("✅")
-			else
-				TyrantStatus:SetDesc("❌")
-			end
-		end
-	end)
-end)
-EyeStatus = L_1_[93]["Main"]:AddParagraph({
-	["Title"] = "Check Status Eyes",
-	["Content"] = ""
-})
-function Check_Eye()
-	local L_530_ = {}
-	L_530_[4] = workspace["Map"]["TikiOutpost"]["IslandModel"]
-	L_530_[1] = {
-		L_530_[4]["Eye1"];
-		L_530_[4]["Eye2"],
-		L_530_[4]["IslandChunks"]["E"]["Eye3"];
-		L_530_[4]["IslandChunks"]["E"]["Eye4"]
-	}
-	L_530_[3] = 0
-	for L_531_forvar0, L_532_forvar1 in ipairs(L_530_[1]) do
-		local L_533_ = {}
-		L_533_[2], L_533_[3] = L_531_forvar0, L_532_forvar1
-		if L_533_[3] and L_533_[3]["Transparency"] ~= 1 then
-			R_[3] += 1
-		end
-	end
-	L_530_[2] = L_530_[3] == 4
-	return L_530_[3], L_530_[2]
-end
-task["spawn"](function()
-	local L_534_ = {}
-	L_534_[2] = false
-	while task["wait"](1) do
-		local L_535_ = {}
-		L_535_[1], L_535_[2] = Check_Eye()
-		EyeStatus:SetDesc("Eyes: " .. (L_535_[1] .. "/4"))
-		if L_535_[2] and not L_534_[2] then
-			L_534_[2] = true
-		elseif not L_535_[2] then
-			L_534_[2] = false
-		end
-	end
-end)
-FarmTyrant = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Boss";
-	["Description"] = "",
-	["Default"] = false,
-	["Callback"] = function(L_536_arg0)
-		local L_537_ = {}
-		L_537_[2] = L_536_arg0
-		_G["FarmTyrant"] = L_537_[2]
-	end
-})
-spawn(function()
-	while wait(Sec) do
-		if _G["FarmTyrant"] then
-			pcall(function()
-				local L_538_ = {}
-				if not L_1_[136]["Character"] then
-					return
-				end
-				L_538_[3] = L_1_[136]["Character"]:FindFirstChild("HumanoidRootPart")
-				if not L_538_[3] then
-					return
-				end
-				L_538_[1] = Vector3["new"](-16268.287, 152.616, 1390.773)
-				if (L_538_[3]["Position"] - L_538_[1])["Magnitude"] > 5 then
-					_tp(CFrame["new"](L_538_[1]))
-					repeat
-						wait()
-					until not _G["FarmTyrant"] or L_1_[136]["Character"] and (L_1_[136]["Character"]:FindFirstChild("HumanoidRootPart") and (L_1_[136]["Character"]["HumanoidRootPart"]["Position"] - L_538_[1])["Magnitude"] <= 5)
-				end
-				L_538_[4] = workspace["Enemies"]:FindFirstChild("Tyrant of the Skies")
-				if L_538_[4] and (L_538_[4]:FindFirstChild("Humanoid") and L_538_[4]["Humanoid"]["Health"] > 0) then
-					repeat
-						if not _G["FarmTyrant"] then
-							break
-						end
-						if L_1_[4] and L_1_[4]["Kill"] then
-							L_1_[4]["Kill"](L_538_[4], _G["FarmTyrant"])
-						end
-						wait()
-					until not _G["FarmTyrant"] or not L_538_[4]["Parent"] or L_538_[4]["Humanoid"]["Health"] <= 0
-					return
-				end
-				L_538_[5] = {
-					"Serpent Hunter";
-					"Skull Slayer",
-					"Isle Champion";
-					"Sun-kissed Warrior"
-				}
-				for L_539_forvar0, L_540_forvar1 in ipairs(L_538_[5]) do
-					local L_541_ = {}
-					L_541_[1], L_541_[2] = L_539_forvar0, L_540_forvar1
-					if not _G["FarmTyrant"] then
-						break
-					end
-					for L_542_forvar0, L_543_forvar1 in pairs(workspace["Enemies"]:GetChildren()) do
-						local L_544_ = {}
-						L_544_[2], L_544_[3] = L_542_forvar0, L_543_forvar1
-						if not _G["FarmTyrant"] then
-							break
-						end
-						if L_544_[3] and (L_544_[3]["Name"] == L_541_[2] and (L_544_[3]:FindFirstChild("HumanoidRootPart") and (L_544_[3]:FindFirstChild("Humanoid") and L_544_[3]["Humanoid"]["Health"] > 0))) then
-							if (L_538_[3]["Position"] - L_544_[3]["HumanoidRootPart"]["Position"])["Magnitude"] > 5000 then
-								local L_545_ = {}
-								_tp(L_544_[3]["HumanoidRootPart"]["CFrame"] * CFrame["new"](0, 30, 0))
-								L_545_[2] = tick()
-								repeat
-									wait()
-									L_538_[3] = L_1_[136]["Character"] and L_1_[136]["Character"]:FindFirstChild("HumanoidRootPart")
-								until not _G["FarmTyrant"] or not L_538_[3] or (L_538_[3]["Position"] - L_544_[3]["HumanoidRootPart"]["Position"])["Magnitude"] <= 6 or tick() - L_545_[2] > 8
-							end
-							repeat
-								if not _G["FarmTyrant"] then
-									break
-								end
-								if L_1_[4] and L_1_[4]["Kill"] then
-									L_1_[4]["Kill"](L_544_[3], _G["FarmTyrant"])
-								end
-								wait()
-							until not _G["FarmTyrant"] or not L_544_[3]["Parent"] or L_544_[3]["Humanoid"]["Health"] <= 0
-						end
-					end
-				end
-			end)
-		end
-	end
-end)
-FarmPhaBinh = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Summon Boss";
-	["Description"] = "",
-	["Default"] = false;
-	["Callback"] = function(L_546_arg0)
-		local L_547_ = {}
-		L_547_[2] = L_546_arg0
-		_G["FarmPhaBinh"] = L_547_[2]
-	end
-})
-L_1_[100] = function(L_548_arg0)
-	local L_549_ = {}
-	L_549_[2] = L_548_arg0
-	L_549_[1] = game:GetService("VirtualInputManager")
-	L_549_[1]:SendKeyEvent(true, L_549_[2], false, game)
-	wait(.05)
-	L_549_[1]:SendKeyEvent(false, L_549_[2], false, game)
-end
-L_1_[3] = function(L_550_arg0)
-	local L_551_ = {}
-	L_551_[4] = L_550_arg0
-	L_551_[2] = L_1_[136]["Character"]
-	L_551_[3] = L_1_[136]["Backpack"]
-	if not(L_551_[2] and (L_551_[2]:FindFirstChild("Humanoid") and L_551_[2]["Humanoid"]["Health"] > 0)) then
-		return
-	end
-	for L_552_forvar0, L_553_forvar1 in pairs(L_551_[3]:GetChildren()) do
-		local L_554_ = {}
-		L_554_[3], L_554_[2] = L_552_forvar0, L_553_forvar1
-		if L_554_[2]:IsA("Tool") and L_554_[2]["ToolTip"] == L_551_[4] then
-			L_554_[2]["Parent"] = L_551_[2]
-			wait(.12)
-			for L_555_forvar0, L_556_forvar1 in ipairs({
-				"Z",
-				"X",
-				"C",
-				"V",
-				"F"
-			}) do
-				local L_557_ = {}
-				L_557_[1], L_557_[2] = L_555_forvar0, L_556_forvar1
-				if not _G["FarmPhaBinh"] then
-					break
-				end
-				pcall(function()
-					L_1_[100](L_557_[2])
-				end)
-				wait(.12)
-			end
-			L_554_[2]["Parent"] = L_551_[3]
-			break
-		end
-	end
-end
-L_1_[101] = {
-	CFrame["new"](-16332.526367188, 158.07200622559, 1440.3249511719);
-	CFrame["new"](-16288.609375, 158.16700744629, 1470.3680419922),
-	CFrame["new"](-16245.412109375, 158.43699645996, 1463.3659667969);
-	CFrame["new"](-16212.46875, 158.16700744629, 1466.3439941406),
-	CFrame["new"](-16211.946289062, 158.07200622559, 1322.3979492188);
-	CFrame["new"](-16260.921875, 154.92100524902, 1323.6159667969),
-	CFrame["new"](-16297.059570312, 159.32299804688, 1317.2239990234);
-	CFrame["new"](-16335.096679688, 159.33399963379, 1324.8859863281)
-}
-spawn(function()
-	while wait(Sec) do
-		if _G["FarmPhaBinh"] then
-			pcall(function()
-				if not(L_1_[136] and (L_1_[136]["Character"] and (L_1_[136]["Character"]:FindFirstChild("HumanoidRootPart") and (L_1_[136]["Character"]:FindFirstChild("Humanoid") and L_1_[136]["Character"]["Humanoid"]["Health"] > 0)))) then
-					return
-				end
-				for L_558_forvar0, L_559_forvar1 in ipairs(L_1_[101]) do
-					local L_560_ = {}
-					L_560_[3], L_560_[5] = L_558_forvar0, L_559_forvar1
-					if not _G["FarmPhaBinh"] then
-						break
-					end
-					_tp(L_560_[5])
-					L_560_[1] = false
-					L_560_[2] = tick()
-					while tick() - L_560_[2] < 12 and (not L_560_[1] and _G["FarmPhaBinh"]) do
-						local L_561_ = {}
-						L_561_[2] = L_1_[136]["Character"] and L_1_[136]["Character"]:FindFirstChild("HumanoidRootPart")
-						if not L_561_[2] then
-							break
-						end
-						L_561_[3] = (L_561_[2]["Position"] - L_560_[5]["Position"])["Magnitude"]
-						if L_561_[3] <= 3 then
-							L_560_[1] = true
-							break
-						end
-						wait(.1)
-					end
-					if _G["FarmPhaBinh"] and L_560_[1] then
-						L_1_[3]("Melee")
-						L_1_[3]("Sword")
-						L_1_[3]("Gun")
-					end
-				end
-			end)
-		end
-	end
-end)
-L_1_[93]["Main"]:AddSection({
-	"Farm Material"
+	"Material's"
 })
 Test = L_1_[93]["Main"]:AddDropdown({
 	["Name"] = "Choose Material";
@@ -4849,7 +4243,7 @@ spawn(function()
 	end
 end)
 L_1_[93]["Main"]:AddSection({
-	"Farm Boss"
+	"Farm Bosses"
 })
 BossDropdown = L_1_[93]["Main"]:AddDropdown({
 	["Name"] = "Select Boss";
@@ -5277,140 +4671,7 @@ end)
 L_1_[93]["Settings"]:AddSection({
 	"Settings / Configure"
 })
-Initialize = L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Fast Attack",
-	["Description"] = "",
-	["Default"] = true,
-	["Callback"] = function(L_629_arg0)
-		local L_630_ = {}
-		L_630_[2] = L_629_arg0
-		_G["Seriality"] = L_630_[2]
-	end
-})
-Bringmob = L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Bring Mobs";
-	["Description"] = "",
-	["Default"] = true,
-	["Callback"] = function(L_631_arg0)
-		local L_632_ = {}
-		L_632_[2] = L_631_arg0
-		_B = L_632_[2]
-	end
-})
-L_1_[93]["Settings"]:AddDropdown({
-	["Name"] = "Bring Mob Mode";
-	["Description"] = "Adjust Range";
-	["Default"] = "350";
-	["Options"] = {
-		"250";
-		"300";
-		"350",
-		"400";
-		"450";
-		"500"
-	},
-	["Callback"] = function(L_633_arg0)
-		local L_634_ = {}
-		L_634_[2] = L_633_arg0
-		_G["BringRange"] = tonumber(L_634_[2])
-	end
-})
-L_1_[93]["Settings"]:AddDropdown({
-	["Name"] = "Bring Mob Speed";
-	["Description"] = "Adjust Speed";
-	["Default"] = "300";
-	["Options"] = {
-		"250";
-		"300",
-		"350";
-		"400";
-		"450";
-		"500"
-	},
-	["Callback"] = function(L_635_arg0)
-		local L_636_ = {}
-		L_636_[2] = L_635_arg0
-		_G["SpeedB"] = tonumber(L_636_[2])
-	end
-})
-L_1_[93]["Settings"]:AddDropdown({
-	["Name"] = "Bring Mob Max",
-	["Description"] = "Adjust Mob";
-	["Default"] = "6",
-	["Options"] = {
-		"2";
-		"3";
-		"4";
-		"5";
-		"6"
-	};
-	["Callback"] = function(L_637_arg0)
-		local L_638_ = {}
-		L_638_[1] = L_637_arg0
-		_G["MobM"] = tonumber(L_638_[1])
-	end
-})
-L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Auto Hop Server",
-	["Default"] = false;
-	["Callback"] = function(L_639_arg0)
-		local L_640_ = {}
-		L_640_[2] = L_639_arg0
-		_G["AutoHopServer"] = L_640_[2]
-		if not L_640_[2] then
-			_G["HopTimer"] = nil
-		end
-	end
-})
-Spawn(function()
-	while Wait(1) do
-		if _G["AutoHopServer"] then
-			pcall(function()
-				if not _G["HopTimer"] then
-					_G["HopTimer"] = tick()
-				end
-				if tick() - _G["HopTimer"] >= _G["HopDelay"] then
-					_G["HopTimer"] = tick()
-					if syn and syn["queue_on_teleport"] then
-						syn["queue_on_teleport"](L_1_[2]({
-							"loadstring(game:Http",
-							"Get('https://pastefy",
-							".app/iiFOhcot/raw'))",
-							"()"
-						}))
-					end;
-					(game:GetService("TeleportService")):Teleport(game["PlaceId"], game["Players"]["LocalPlayer"])
-				end
-			end)
-		end
-	end
-end)
-L_1_[93]["Settings"]:AddSlider({
-	["Name"] = "Hop Delay (Minutes)";
-	["Min"] = 5,
-	["Max"] = 120;
-	["Default"] = 30;
-	["Increment"] = 1;
-	["Callback"] = function(L_641_arg0)
-		local L_642_ = {}
-		L_642_[1] = L_641_arg0
-		_G["HopDelay"] = L_642_[1] * 60
-	end
-})
-L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Auto Set Spawn Point";
-	["Default"] = false,
-	["Callback"] = function(L_643_arg0)
-		local L_644_ = {}
-		L_644_[1] = L_643_arg0;
-		(getgenv())["Set"] = L_644_[1]
-		if L_644_[1] then
-			pcall(function()
-				(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer("SetSpawnPoint")
-			end)
-		end
-	end
-})
+
 BusuAura = L_1_[93]["Settings"]:AddToggle({
 	["Name"] = "Auto Turn on Buso",
 	["Description"] = "",
@@ -5532,70 +4793,7 @@ L_1_[93]["Settings"]:AddToggle({
 		end
 	end
 })
-L_1_[93]["Settings"]:AddSlider({
-	["Name"] = "Speed Value";
-	["Min"] = 26,
-	["Max"] = 300,
-	["Default"] = (getgenv())["WalkSpeedValue"];
-	["Callback"] = function(L_658_arg0)
-		local L_659_ = {}
-		L_659_[3] = L_658_arg0;
-		(getgenv())["WalkSpeedValue"] = L_659_[3]
-		L_659_[1] = L_1_[45]["Character"] and L_1_[45]["Character"]:FindFirstChild("Humanoid")
-		if _G["WalkSpeedEnabled"] and L_659_[1] then
-			L_659_[1]["WalkSpeed"] = L_659_[3]
-		end
-	end
-})
-L_1_[45]["CharacterAdded"]:Connect(function(L_660_arg0)
-	local L_661_ = {}
-	L_661_[2] = L_660_arg0
-	L_661_[3] = L_661_[2]:WaitForChild("Humanoid", 5)
-	if _G["WalkSpeedEnabled"] then
-		L_1_[19](L_661_[3])
-	end
-end)
-if L_1_[45]["Character"] then
-	local L_662_ = {}
-	L_662_[2] = L_1_[45]["Character"]:FindFirstChild("Humanoid")
-	if _G["WalkSpeedEnabled"] then
-		L_1_[19](L_662_[2])
-	end
-end
-L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Auto Jump";
-	["Default"] = false;
-	["Callback"] = function(L_663_arg0)
-		local L_664_ = {}
-		L_664_[2] = L_663_arg0
-		_G["JumpEnabled"] = L_664_[2]
-		if L_664_[2] and L_1_[45]["Character"] then
-			local L_665_ = {}
-			L_665_[1] = L_1_[45]["Character"]:FindFirstChild("Humanoid")
-			if L_665_[1] then
-				L_665_[1]["JumpPower"] = (getgenv())["JumpValue"]
-			end
-		end
-	end
-})
-L_1_[93]["Settings"]:AddSlider({
-	["Name"] = "Jump Value",
-	["Min"] = 50;
-	["Max"] = 500,
-	["Default"] = (getgenv())["JumpValue"],
-	["Callback"] = function(L_666_arg0)
-		local L_667_ = {}
-		L_667_[1] = L_666_arg0;
-		(getgenv())["JumpValue"] = L_667_[1]
-		if _G["JumpEnabled"] and L_1_[45]["Character"] then
-			local L_668_ = {}
-			L_668_[2] = L_1_[45]["Character"]:FindFirstChild("Humanoid")
-			if L_668_[2] then
-				L_668_[2]["JumpPower"] = L_667_[1]
-			end
-		end
-	end
-})
+
 RandomAround = L_1_[93]["Settings"]:AddToggle({
 	["Name"] = L_1_[2]({
 		"Auto Turn on Spin Po";
@@ -13865,124 +13063,100 @@ spawn(function()
 	end
 end)
 L_1_[93]["Raids"]:AddToggle({
-    ["Name"] = "Auto Teleport To Lab",
-    ["Default"] = false,
-    ["Callback"] = function(L_1509_arg0)
-        _G["TpLab"] = L_1509_arg0
-        
-        if not _G["TpLab"] then
-            StopTween(_G["TpLab"])
-            return
-        end
-        
-        -- Usar uma task separada para não travar a callback
-        task.spawn(function()
-            while _G["TpLab"] and task.wait(0.5) do
-                if World2 then
-                    topos(CFrame.new(-6438.73535, 250.645355, -4501.50684))
-                elseif World3 then
-                    topos(CFrame.new(-5017.40869, 314.844055, -2823.0127, -0.925743818, 4.48217499e-08, -0.378151238, 4.55503146e-09, 1, 1.07377559e-07, 0.378151238, 9.7681621e-08, -0.925743818))
-                end
-                
-                -- Pequena pausa para evitar spam
-                task.wait(2)
-            end
-        end)
-    end
-})
+	["Name"] = "Auto Teleport To Lab",
+	["Default"] = false,
+	["Callback"] = function(L_1509_arg0)
+		-- Variáveis internas do voo
+		local L_2000_ = false
+		local L_2001_ = nil
+		local L_2002_ = 320
+		local L_2003_ = Instance.new("Part", workspace)
+		L_2003_.Name = "L_Anchor"
+		L_2003_.Size = Vector3.new(1,1,1)
+		L_2003_.Transparency = 1
+		L_2003_.Anchored = true
+		L_2003_.CanCollide = false
+		L_2003_.CanTouch = false
 
-L_1_[93]["Raids"]:AddSection({
-	L_1_[2]({
-		"I
-		Raid Law",
-		"d"
-	})
-})
-L_1_[93]["Raids"]:AddButton({
-	["Name"] = "Buy Microchip Law",
-	["Description"] = "";
-	["Callback"] = function()
-		L_1_[55]["Remotes"]["CommF_"]:InvokeServer("BlackbeardReward", "Microchip", "2")
-	end
-})
-L_1_[93]["Raids"]:AddButton({
-	["Name"] = "Start Law Raids",
-	["Description"] = "",
-	["Callback"] = function()
-		fireclickdetector(workspace["Map"]["CircleIsland"]["RaidSummon"]["Button"]["Main"]["ClickDetector"])
-	end
-})
-L_1_[93]["Raids"]:AddToggle({
-	["Name"] = L_1_[2]({
-		"Auto Buy Microchip L";
-		"aw"
-	});
-	["Description"] = "";
-	["Default"] = false,
-	["Callback"] = function(L_1511_arg0)
-		local L_1512_ = {}
-		L_1512_[1] = L_1511_arg0;
-		(getgenv())["AutoBuyMicrochipLaw"] = L_1512_[1]
-	end
-})
-spawn(function()
-	while task["wait"](1) do
-		if (getgenv())["AutoBuyMicrochipLaw"] then
-			pcall(function()
-				(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer("BlackbeardReward", "Microchip", "2")
+		-- Função principal de voo
+		local function flyToFast(L_2004_, L_2005_, L_2006_)
+			if not hrp or not hrp.Parent then return end
+			if L_2001_ then 
+				L_2001_:Cancel()
+				L_2001_ = nil
+			end
+			
+			local L_2007_
+			if L_2005_ then
+				L_2007_ = L_2004_ * CFrame.new(0, L_2005_, 0)
+			else
+				L_2007_ = L_2004_ * CFrame.new(0, 5, 0)
+			end
+			
+			local L_2008_ = (L_2007_.Position - hrp.Position).Magnitude
+			if L_2006_ or L_2008_ < 50 then
+				hrp.CFrame = L_2007_
+				return
+			end
+			
+			local L_2009_ = L_2008_ / L_2002_
+			L_2003_.CFrame = hrp.CFrame
+			
+			local L_2010_ = TweenInfo.new(L_2009_, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0)
+			L_2001_ = TweenService:Create(L_2003_, L_2010_, {CFrame = L_2007_})
+			L_2001_:Play()
+			L_2000_ = true
+			
+			L_2001_.Completed:Connect(function()
+				L_2000_ = false
+				L_2001_ = nil
 			end)
 		end
-	end
-end)
-L_1_[93]["Raids"]:AddToggle({
-	["Name"] = "Auto Start Law Raids",
-	["Description"] = "";
-	["Default"] = false;
-	["Callback"] = function(L_1513_arg0)
-		local L_1514_ = {}
-		L_1514_[2] = L_1513_arg0;
-		(getgenv())["AutoStartLawRaids"] = L_1514_[2]
-	end
-})
-spawn(function()
-	while task["wait"](1) do
-		if (getgenv())["AutoStartLawRaids"] then
-			pcall(function()
-				fireclickdetector(workspace["Map"]["CircleIsland"]["RaidSummon"]["Button"]["Main"]["ClickDetector"])
-			end)
+
+		-- Função para parar voo
+		local function stopFlying()
+			L_2000_ = false
+			if L_2001_ then 
+				L_2001_:Cancel()
+				L_2001_ = nil
+			end
 		end
-	end
-end)
-L_1_[93]["Raids"]:AddToggle({
-	["Name"] = "Auto Kill Law";
-	["Description"] = "",
-	["Default"] = false,
-	["Callback"] = function(L_1515_arg0)
-		local L_1516_ = {}
-		L_1516_[1] = L_1515_arg0
-		_G["AutoLawKak"] = L_1516_[1]
-	end
-})
-spawn(function()
-	while wait(Sec) do
-		if _G["AutoLawKak"] then
-			pcall(function()
-				local L_1517_ = {}
-				L_1517_[1] = GetConnectionEnemies("Order")
-				if L_1517_[1] then
-					repeat
-						task["wait"]()
-						L_1_[4]["Kill"](L_1517_[1], _G["AutoLawKak"])
-					until _G["AutoLawKak"] == false or not L_1517_[1]["Parent"] or L_1517_[1]["Humanoid"]["Health"] <= 0
-				else
-					_tp(CFrame["new"](-6217.2021484375, 28.047645568848, -5053.1357421875))
+
+		-- Loop que mantém o jogador no bloco invisível
+		task.spawn(function()
+			while true do
+				if L_2000_ and hrp and hrp.Parent then
+					hrp.CFrame = L_2003_.CFrame
 				end
-			end)
+				task.wait()
+			end
+		end)
+
+		-- Controle do toggle
+		local L_1510_ = {}
+		L_1510_[1] = L_1509_arg0
+		_G["FlyLab"] = L_1510_[1]
+		stopFlying()
+
+		while _G["FlyLab"] do
+			task.wait()
+			if _G["FlyLab"] then
+				if World2 and _G["FlyLab"] then
+					flyToFast(CFrame.new(-6438.73535, 250.645355, -4501.50684), 40, false)
+				elseif World3 and _G["FlyLab"] then
+					flyToFast(CFrame.new(
+						-5017.40869, 314.844055, -2823.0127,
+						-0.925743818, 4.48217499e-08, -0.378151238,
+						4.55503146e-09, 1, 1.07377559e-07,
+						0.378151238, 9.7681621e-08, -0.925743818
+					), 40, false)
+				end
+			end
 		end
 	end
-end)
+})
 L_1_[93]["Raids"]:AddSection({
-	"Raids Dungeons"
+	"Dungeons Raid [ NEW!]"
 })
 L_1_[42] = game["Players"]["LocalPlayer"]
 L_1_[83] = function()
@@ -14206,6 +13380,96 @@ task["spawn"](function()
 		end
 	end
 end)
+L_1_[93]["Raids"]:AddSection({
+	L_1_[2]({
+		"Items Law/Order Swor",
+		"d"
+	})
+})
+L_1_[93]["Raids"]:AddButton({
+	["Name"] = "Buy Microchip Law",
+	["Description"] = "";
+	["Callback"] = function()
+		L_1_[55]["Remotes"]["CommF_"]:InvokeServer("BlackbeardReward", "Microchip", "2")
+	end
+})
+L_1_[93]["Raids"]:AddButton({
+	["Name"] = "Start Law Raids",
+	["Description"] = "",
+	["Callback"] = function()
+		fireclickdetector(workspace["Map"]["CircleIsland"]["RaidSummon"]["Button"]["Main"]["ClickDetector"])
+	end
+})
+L_1_[93]["Raids"]:AddToggle({
+	["Name"] = L_1_[2]({
+		"Auto Buy Microchip L";
+		"aw"
+	});
+	["Description"] = "";
+	["Default"] = false,
+	["Callback"] = function(L_1511_arg0)
+		local L_1512_ = {}
+		L_1512_[1] = L_1511_arg0;
+		(getgenv())["AutoBuyMicrochipLaw"] = L_1512_[1]
+	end
+})
+spawn(function()
+	while task["wait"](1) do
+		if (getgenv())["AutoBuyMicrochipLaw"] then
+			pcall(function()
+				(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer("BlackbeardReward", "Microchip", "2")
+			end)
+		end
+	end
+end)
+L_1_[93]["Raids"]:AddToggle({
+	["Name"] = "Auto Start Law Raids",
+	["Description"] = "";
+	["Default"] = false;
+	["Callback"] = function(L_1513_arg0)
+		local L_1514_ = {}
+		L_1514_[2] = L_1513_arg0;
+		(getgenv())["AutoStartLawRaids"] = L_1514_[2]
+	end
+})
+spawn(function()
+	while task["wait"](1) do
+		if (getgenv())["AutoStartLawRaids"] then
+			pcall(function()
+				fireclickdetector(workspace["Map"]["CircleIsland"]["RaidSummon"]["Button"]["Main"]["ClickDetector"])
+			end)
+		end
+	end
+end)
+L_1_[93]["Raids"]:AddToggle({
+	["Name"] = "Auto Kill Law";
+	["Description"] = "",
+	["Default"] = false,
+	["Callback"] = function(L_1515_arg0)
+		local L_1516_ = {}
+		L_1516_[1] = L_1515_arg0
+		_G["AutoLawKak"] = L_1516_[1]
+	end
+})
+spawn(function()
+	while wait(Sec) do
+		if _G["AutoLawKak"] then
+			pcall(function()
+				local L_1517_ = {}
+				L_1517_[1] = GetConnectionEnemies("Order")
+				if L_1517_[1] then
+					repeat
+						task["wait"]()
+						L_1_[4]["Kill"](L_1517_[1], _G["AutoLawKak"])
+					until _G["AutoLawKak"] == false or not L_1517_[1]["Parent"] or L_1517_[1]["Humanoid"]["Health"] <= 0
+				else
+					_tp(CFrame["new"](-6217.2021484375, 28.047645568848, -5053.1357421875))
+				end
+			end)
+		end
+	end
+end)
+
 L_1_[93]["Combat"]:AddSection({
 	"Combat / AimBot"
 })
