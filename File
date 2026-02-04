@@ -13063,9 +13063,14 @@ spawn(function()
 	end
 end)
 L_1_[93]["Raids"]:AddToggle({
-	["Name"] = "Auto Teleport To Lab",
+	["Name"] = "Auto Fly To Lab",
 	["Default"] = false,
 	["Callback"] = function(L_1509_arg0)
+		-- Serviços e variáveis principais
+		local L_2011_ = game:GetService("Players").LocalPlayer
+		local L_2012_ = game:GetService("TweenService")
+		local L_2013_ = L_2011_.Character and L_2011_.Character:WaitForChild("HumanoidRootPart")
+		
 		-- Variáveis internas do voo
 		local L_2000_ = false
 		local L_2001_ = nil
@@ -13080,7 +13085,7 @@ L_1_[93]["Raids"]:AddToggle({
 
 		-- Função principal de voo
 		local function flyToFast(L_2004_, L_2005_, L_2006_)
-			if not hrp or not hrp.Parent then return end
+			if not L_2013_ or not L_2013_.Parent then return end
 			if L_2001_ then 
 				L_2001_:Cancel()
 				L_2001_ = nil
@@ -13093,17 +13098,17 @@ L_1_[93]["Raids"]:AddToggle({
 				L_2007_ = L_2004_ * CFrame.new(0, 5, 0)
 			end
 			
-			local L_2008_ = (L_2007_.Position - hrp.Position).Magnitude
+			local L_2008_ = (L_2007_.Position - L_2013_.Position).Magnitude
 			if L_2006_ or L_2008_ < 50 then
-				hrp.CFrame = L_2007_
+				L_2013_.CFrame = L_2007_
 				return
 			end
 			
 			local L_2009_ = L_2008_ / L_2002_
-			L_2003_.CFrame = hrp.CFrame
+			L_2003_.CFrame = L_2013_.CFrame
 			
 			local L_2010_ = TweenInfo.new(L_2009_, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0)
-			L_2001_ = TweenService:Create(L_2003_, L_2010_, {CFrame = L_2007_})
+			L_2001_ = L_2012_:Create(L_2003_, L_2010_, {CFrame = L_2007_})
 			L_2001_:Play()
 			L_2000_ = true
 			
@@ -13125,8 +13130,8 @@ L_1_[93]["Raids"]:AddToggle({
 		-- Loop que mantém o jogador no bloco invisível
 		task.spawn(function()
 			while true do
-				if L_2000_ and hrp and hrp.Parent then
-					hrp.CFrame = L_2003_.CFrame
+				if L_2000_ and L_2013_ and L_2013_.Parent then
+					L_2013_.CFrame = L_2003_.CFrame
 				end
 				task.wait()
 			end
